@@ -7,7 +7,7 @@ class CreateCampaigns < ActiveRecord::Migration[5.2]
       t.integer :status
       t.datetime :event_date
       t.string :event_hour
-      t.string :locale
+      t.string :locate
 
       t.timestamps
     end

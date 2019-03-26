@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_034842) do
     t.integer "status"
     t.datetime "event_date"
     t.string "event_hour"
-    t.string "locale"
+    t.string "locate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
