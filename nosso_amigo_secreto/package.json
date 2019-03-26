@@ -1,5 +1,7 @@
 {
   "name": "nosso_amigo_secreto",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }
