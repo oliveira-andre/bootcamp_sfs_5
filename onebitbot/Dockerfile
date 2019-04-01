@@ -10,7 +10,10 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
 COPY Gemfile ./
+RUN gem update --system
+RUN gem install bundler
 RUN bundle install
+RUN bundler update --bundler
 
 COPY . .
 
