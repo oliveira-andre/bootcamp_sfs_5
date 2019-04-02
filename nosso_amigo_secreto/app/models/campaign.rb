@@ -1,11 +1,16 @@
-class Campaign < ApplicationRecord
-  before_validation :set_member, on: :create
-  before_validation :set_status, on: :create
+# frozen_string_literal: true
 
+class Campaign < ApplicationRecord
   belongs_to :user
   has_many :members, dependent: :destroy
-  enum status: [:pending, :finished]
+  before_validation :set_member, on: :create
+  before_validation :set_status, on: :create
+  enum status: %i[pending finished]
   validates :title, :description, :user, :status, presence: true
+
+  def count_opened
+    members.where(open: true).count
+  end
 
   private
 
@@ -14,6 +19,6 @@ class Campaign < ApplicationRecord
   end
 
   def set_member
-    self.members << Member.create(name: self.user.name, email: self.user.email)
+    members << Member.create(name: user.name, email: user.email)
   end
 end
