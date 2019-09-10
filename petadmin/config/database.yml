@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5432
+  user: root
+  password: root
+  
+
+development:
+  <<: *default
+  database: petadmin_development
+
+test:
+  <<: *default
+  database: petadmin_test
+
+production:
+  <<: *default
+  database: petadmin_production
