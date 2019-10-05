@@ -1,3 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
+      resources :forms
+      resources :questions, only: %i[create update destroy]
+      resources :answers, only: %i[index show create destroy]
+    end
+  end
 end
